@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies</title>
+    <link rel="stylesheet" href="styles.css">
+        <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Poppins Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Redirect to login page if user is not logged in
+            if (!sessionStorage.getItem('loggedInUser')) {
+                window.location.href = 'login.html';
+            } else {
+                // Retrieve and display hobbies
+                const hobbies = JSON.parse(localStorage.getItem('hobbies'));
+                if (hobbies) {
+                    document.querySelector('.hobby').innerText = hobbies.hobbyName;
+                    document.querySelector('.description').innerText = hobbies.hobbyDescription;
+
+                } else {
+                    container.innerHTML = '<p>No hobbies found.</p>';
+                }
+            }
+
+            // Logout functionality
+            document.getElementById('logoutLink').addEventListener('click', function() {
+                sessionStorage.removeItem('loggedInUser');
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <!-- Brand/logo -->
+          <a class="navbar-brand" href="#">
+            <img class="initials" src="./img/cuk.png" alt="">
+          </a>
+      
+          <!-- Toggler/collapsibe Button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+              <li class="nav-item">
+                <a class="nav-link" href="educationalDetails.html">Educational Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="achievements.html">Achievements</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="hobbies.html">Hobbies</a>
+              </li>
+              <li class="nav-item">
+                <a style="color: red;" class="nav-link" href="#" id="logoutLink">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="box2">
+        <!-- Hobbies will be loaded here -->
+        <h2>Hobbies</h2>
+        <h3>Name:</h3>
+        <p class="hobby"></p>
+        <h3>Description:</h3>
+        <p class="description"></p>
+    </div>
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
